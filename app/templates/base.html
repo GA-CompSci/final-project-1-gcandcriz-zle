@@ -1,0 +1,46 @@
+{# ------------------ BASE! ---------------- #}
+{# pretty much every page will use this stuff #}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  {# check out the templates/shared/_head.html to see CSS and head includes #}
+  {% include "shared/_head.html" %}
+  <body id="page-top">
+
+    {# -- wrapper used by this bootstrap theme for spacing -- #}
+    <div id="body-inner">
+        
+          {% if not disable_navbar %}
+            {% include "shared/_nav.html" with context %}
+          {% endif%}
+          
+          {% block content %}
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            
+          </div>
+          {% endblock %}
+      
+          {% include "shared/_footer.html" with context %}
+
+
+    </div>
+    <!-- End of Page Wrapper --> 
+
+    {% block btt %}
+      <!-- Scroll top -->
+      <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    {% endblock %}
+
+    {# You can put modals pretty much anywhere, but some folks find it tidy to keep them out of the content block #}
+    {% block modals %}{% endblock %}
+
+    {# LOAD UP ALL YOUR THEME'S JS HERE #}
+    {% include "shared/_js.html" with context %}
+
+    {# A convenient block so you can drop in your own template-specific JS code #}
+    {% block tail %}{% endblock %}
+
+  </body>
+</html>        
